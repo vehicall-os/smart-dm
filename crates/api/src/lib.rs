@@ -3,22 +3,24 @@
 //! REST API and WebSocket server for the vehicle diagnostics dashboard.
 
 use axum::{
-    routing::{get, post},
+    routing::get,
     Router,
     Json,
-    extract::{Query, State},
+    extract::State,
     response::IntoResponse,
-    http::StatusCode,
 };
-use serde::{Deserialize, Serialize};
+use serde::Serialize;
 use std::sync::Arc;
 use tokio::sync::RwLock;
 use tracing::{info, Level};
 use tracing_subscriber::FmtSubscriber;
+use tower_governor::GovernorLayer;
 
 mod routes;
+pub mod rate_limit;
 
 use storage::Repository;
+use rate_limit::{RateLimitConfig, create_governor_config};
 
 /// Application state shared across handlers
 pub struct AppState {
@@ -76,11 +78,20 @@ pub struct SystemMetrics {
 
 /// Create the application router
 pub fn create_router(state: Arc<RwLock<AppState>>) -> Router {
+    // Create rate limiter config
+    let governor_conf = create_governor_config(&RateLimitConfig::default());
+
+    // Rate limited API routes
+    let api_routes = Router::new()
+        .route("/sensors/live", get(routes::sensors::get_live))
+        .route("/predictions", get(routes::predictions::get_predictions))
+        .route("/alerts", get(routes::alerts::get_alerts))
+        .layer(GovernorLayer { config: governor_conf });
+
+    // Health endpoint is not rate limited
     Router::new()
         .route("/api/v1/health", get(health_handler))
-        .route("/api/v1/sensors/live", get(routes::sensors::get_live))
-        .route("/api/v1/predictions", get(routes::predictions::get_predictions))
-        .route("/api/v1/alerts", get(routes::alerts::get_alerts))
+        .nest("/api/v1", api_routes)
         .with_state(state)
 }
 

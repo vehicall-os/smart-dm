@@ -45,6 +45,8 @@ sqlx = { version = "0.7", features = ["sqlite", "runtime-tokio"] }
 axum = "0.7"
 tower = "0.4"
 tower-http = { version = "0.5", features = ["trace", "cors"] }
+tower_governor = "0.4"
+governor = "0.6"
 
 # Observability
 tracing = "0.1"
