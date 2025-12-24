@@ -1,0 +1,19 @@
+[package]
+name = "feature-engine"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+description = "Statistical and frequency domain feature extraction for ML inference"
+
+[dependencies]
+thiserror = { workspace = true }
+tracing = { workspace = true }
+serde = { workspace = true }
+postcard = { workspace = true }
+rustfft = { workspace = true }
+ring-buffer = { path = "../ring-buffer" }
+
+[dev-dependencies]
+proptest = { workspace = true }
+criterion = { workspace = true }

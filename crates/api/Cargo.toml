@@ -1,0 +1,37 @@
+[package]
+name = "api"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+description = "REST API and WebSocket server for vehicle diagnostics dashboard"
+
+[dependencies]
+tokio = { workspace = true }
+thiserror = { workspace = true }
+tracing = { workspace = true }
+tracing-subscriber = { workspace = true }
+serde = { workspace = true }
+serde_json = { workspace = true }
+axum = { workspace = true }
+tower = { workspace = true }
+tower-http = { workspace = true }
+metrics = { workspace = true }
+metrics-exporter-prometheus = { workspace = true }
+config = { workspace = true }
+
+# Internal dependencies
+storage = { path = "../storage" }
+inference-engine = { path = "../inference-engine" }
+fallback = { path = "../fallback" }
+alerting = { path = "../alerting" }
+ring-buffer = { path = "../ring-buffer" }
+obd-scheduler = { path = "../obd-scheduler" }
+
+[dev-dependencies]
+tokio = { workspace = true, features = ["test-util", "macros"] }
+reqwest = { version = "0.11", features = ["json"] }
+
+[[bin]]
+name = "vehicle-pipeline"
+path = "src/main.rs"

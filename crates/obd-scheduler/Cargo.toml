@@ -1,0 +1,16 @@
+[package]
+name = "obd-scheduler"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+description = "Adaptive PID scheduling for OBD-II data acquisition"
+
+[dependencies]
+tokio = { workspace = true }
+thiserror = { workspace = true }
+tracing = { workspace = true }
+obd-protocol = { path = "../obd-protocol" }
+
+[dev-dependencies]
+tokio = { workspace = true, features = ["test-util", "macros"] }

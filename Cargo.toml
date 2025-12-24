@@ -1,0 +1,74 @@
+[workspace]
+resolver = "2"
+members = [
+    "crates/obd-protocol",
+    "crates/obd-scheduler",
+    "crates/data-validator",
+    "crates/ring-buffer",
+    "crates/feature-engine",
+    "crates/inference-engine",
+    "crates/fallback",
+    "crates/alerting",
+    "crates/storage",
+    "crates/api",
+]
+
+[workspace.package]
+version = "0.1.0"
+edition = "2021"
+authors = ["VehicallOS Team"]
+license = "MIT"
+repository = "https://github.com/vehicallos/vehicle-ai-pipeline"
+
+[workspace.dependencies]
+# Async Runtime
+tokio = { version = "1.35", features = ["full", "rt-multi-thread"] }
+tokio-serial = "5.4"
+
+# Error Handling
+anyhow = "1.0"
+thiserror = "1.0"
+
+# Serialization
+postcard = { version = "1.0", features = ["alloc"] }
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+
+# ML Inference
+tract-onnx = "0.21"
+tract-core = "0.21"
+
+# Database
+sqlx = { version = "0.7", features = ["sqlite", "runtime-tokio"] }
+
+# API Server
+axum = "0.7"
+tower = "0.4"
+tower-http = { version = "0.5", features = ["trace", "cors"] }
+
+# Observability
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["json"] }
+metrics = "0.22"
+metrics-exporter-prometheus = "0.13"
+
+# Configuration
+config = "0.14"
+
+# FFT
+rustfft = "6.2"
+
+# Testing
+proptest = "1.4"
+criterion = "0.5"
+
+[profile.release]
+lto = true
+codegen-units = 1
+opt-level = 3
+strip = true
+
+[profile.release-with-debug]
+inherits = "release"
+debug = true
+strip = false

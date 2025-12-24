@@ -1,0 +1,16 @@
+[package]
+name = "fallback"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+description = "Rule-based fallback system for when ML inference fails"
+
+[dependencies]
+thiserror = { workspace = true }
+tracing = { workspace = true }
+serde = { workspace = true }
+feature-engine = { path = "../feature-engine" }
+
+[dev-dependencies]
+proptest = { workspace = true }

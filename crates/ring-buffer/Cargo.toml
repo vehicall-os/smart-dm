@@ -1,0 +1,16 @@
+[package]
+name = "ring-buffer"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+description = "Lock-free SPSC ring buffer for high-performance sensor frame storage"
+
+[dependencies]
+thiserror = { workspace = true }
+serde = { workspace = true }
+postcard = { workspace = true }
+
+[dev-dependencies]
+proptest = { workspace = true }
+criterion = { workspace = true }

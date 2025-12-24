@@ -1,0 +1,18 @@
+[package]
+name = "obd-protocol"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+description = "OBD-II serial communication protocol for ELM327-compatible adapters"
+
+[dependencies]
+tokio = { workspace = true }
+tokio-serial = { workspace = true }
+thiserror = { workspace = true }
+tracing = { workspace = true }
+serde = { workspace = true }
+
+[dev-dependencies]
+proptest = { workspace = true }
+tokio = { workspace = true, features = ["test-util", "macros"] }
