@@ -1,0 +1,17 @@
+[package]
+name = "camera-capture"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+description = "V4L2 camera capture with FFI bindings for DMS and ADAS"
+
+[dependencies]
+tokio = { workspace = true }
+thiserror = { workspace = true }
+tracing = { workspace = true }
+libc = { workspace = true }
+image = { workspace = true }
+
+[dev-dependencies]
+proptest = { workspace = true }

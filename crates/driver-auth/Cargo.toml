@@ -1,0 +1,19 @@
+[package]
+name = "driver-auth"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+description = "Driver authentication using face recognition"
+
+[dependencies]
+tokio = { workspace = true }
+thiserror = { workspace = true }
+tracing = { workspace = true }
+serde = { workspace = true }
+uuid = { workspace = true }
+chrono = { workspace = true }
+camera-capture = { path = "../camera-capture" }
+
+[dev-dependencies]
+proptest = { workspace = true }

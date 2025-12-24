@@ -1,0 +1,19 @@
+[package]
+name = "event-fusion"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+description = "Multi-modal event fusion for correlating OBD, DMS, ADAS, and IMU data"
+
+[dependencies]
+tokio = { workspace = true }
+thiserror = { workspace = true }
+tracing = { workspace = true }
+serde = { workspace = true }
+dms = { path = "../dms" }
+adas = { path = "../adas" }
+camera-capture = { path = "../camera-capture" }
+
+[dev-dependencies]
+proptest = { workspace = true }

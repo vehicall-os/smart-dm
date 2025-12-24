@@ -1,0 +1,20 @@
+[package]
+name = "dms"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+description = "Driver Monitoring System - drowsiness, distraction, and gaze detection"
+
+[dependencies]
+tokio = { workspace = true }
+thiserror = { workspace = true }
+tracing = { workspace = true }
+serde = { workspace = true }
+image = { workspace = true }
+ndarray = { workspace = true }
+tract-onnx = { workspace = true }
+camera-capture = { path = "../camera-capture" }
+
+[dev-dependencies]
+proptest = { workspace = true }

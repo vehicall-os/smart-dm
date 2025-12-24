@@ -1,0 +1,21 @@
+[package]
+name = "cloud-sync"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+description = "Cloud synchronization via MQTT with bandwidth management"
+
+[dependencies]
+tokio = { workspace = true }
+thiserror = { workspace = true }
+tracing = { workspace = true }
+serde = { workspace = true }
+serde_json = { workspace = true }
+rumqttc = { workspace = true }
+uuid = { workspace = true }
+chrono = { workspace = true }
+event-fusion = { path = "../event-fusion" }
+
+[dev-dependencies]
+proptest = { workspace = true }
