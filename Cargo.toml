@@ -64,6 +64,12 @@ rustfft = "6.2"
 proptest = "1.4"
 criterion = "0.5"
 
+# FFI & Interop
+libc = "0.2"
+
+[workspace.build-dependencies]
+cc = "1.0"
+
 [profile.release]
 lto = true
 codegen-units = 1

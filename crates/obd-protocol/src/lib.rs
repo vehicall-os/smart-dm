@@ -2,14 +2,21 @@
 //!
 //! This crate provides async serial communication with ELM327-compatible
 //! OBD-II adapters. It supports ISO 15765-4 (CAN) and legacy protocols.
+//!
+//! ## FFI Layer
+//!
+//! The `ffi` module provides safe Rust bindings to the C++ CAN driver for
+//! low-latency hardware interaction.
 
 mod client;
 mod error;
+pub mod ffi;
 mod pid;
 mod protocol;
 
 pub use client::ObdClient;
 pub use error::ObdError;
+pub use ffi::{AsyncCanDriver, CanDriver, CSensorFrame, DriverConfig, DriverError};
 pub use pid::{Pid, PidResponse, SensorFrame};
 pub use protocol::ObdProtocol;
 
