@@ -33,6 +33,9 @@ pub enum AdasError {
     
     #[error("Invalid frame format")]
     InvalidFrame,
+
+    #[error("Image processing failed: {0}")]
+    ImageProcessing(String),
 }
 
 /// ADAS module

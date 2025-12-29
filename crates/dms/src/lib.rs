@@ -34,6 +34,12 @@ pub enum DmsError {
     
     #[error("Configuration error: {0}")]
     Config(String),
+
+    #[error("Image processing failed: {0}")]
+    ImageProcessing(String),
+
+    #[error("Keypoints missing for feature calculation")]
+    KeypointsMissing,
 }
 
 /// Driver monitoring module

@@ -14,6 +14,9 @@ serde = { workspace = true }
 uuid = { workspace = true }
 chrono = { workspace = true }
 camera-capture = { path = "../camera-capture" }
+ort = { workspace = true }
+image = { workspace = true }
+ndarray = { workspace = true }
 
 [dev-dependencies]
 proptest = { workspace = true }

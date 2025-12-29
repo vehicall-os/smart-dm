@@ -14,6 +14,7 @@ serde = { workspace = true }
 image = { workspace = true }
 ndarray = { workspace = true }
 tract-onnx = { workspace = true }
+ort = { workspace = true }
 camera-capture = { path = "../camera-capture" }
 
 [dev-dependencies]
