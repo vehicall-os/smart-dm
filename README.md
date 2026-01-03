@@ -1,4 +1,12 @@
-# VehicallOS - CV-Enhanced Fleet Management System
+<div align="center">
+  <img src="assets/social_preview.png" width="100%" alt="VehicallOS Social Preview" />
+</div>
+
+<div align="center">
+  <img src="assets/logo.png" width="150" alt="VehicallOS Logo" />
+  <h1>VehicallOS</h1>
+</div>
+
 
 A real-time vehicle diagnostics and fleet safety platform built with a **C++/Rust hybrid architecture** for Raspberry Pi 4B.
 
